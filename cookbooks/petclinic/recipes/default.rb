@@ -11,7 +11,7 @@ end
 
 remote_file '/opt/tomcat_petclinic/webapps/petclinic.war' do
 #source 'http://your.artifactory.server:8081/path/to/petclinic/pettclinic-1.0.0-SNAPSHOT.war'
-source 'http://localhost:8081/artifactory/libs-snapshot-local/org/springframework/samples/spring-petclinic/1.0.0-SNAPSHOT/spring-petclinic-1.0.0-20170110.180153-1.war'
+source 'http://192.168.50.4:8081/artifactory/libs-snapshot-local/org/springframework/samples/spring-petclinic/1.0.0-SNAPSHOT/spring-petclinic-1.0.0-20170110.180153-1.war'
 owner 'tomcat_petclinicserver'
 group 'tomcat_petclinicserver'
 end
