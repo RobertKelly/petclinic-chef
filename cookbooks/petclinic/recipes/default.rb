@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
+tomcat_service "petclinicserver" do
 action :start
 env_vars [{'JAVA_OPTS' =>
   '-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true '}]
