@@ -3,13 +3,16 @@
 # Recipe:: default
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
-tomcat_service "petclinicserver" do
-action :start
-env_vars [{'JAVA_OPTS' =>
-  '-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true '}]
+tomcat_install "petclinicserver" do
+ version '8.0.36'
 end
 
-remote_file '/opt/tomcat_petclinicserver/webapps/petclinic.war' do
+tomcat_service "petclinicserver" do
+  action [:enable, :start]
+  env_vars [{'CATALINA_BASE' => '/opt/tomcat_petclinicserver_8_0_36/'},{'CATALINA_PID' => '$CATALINA_BASE/bin/tomcat.pid'},{'JAVA_OPTS' => '-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true'}]
+end
+
+remote_file '/opt/tomcat_petclinicserver_8_0_36/webapps/petclinic.war' do
 #source 'http://your.artifactory.server:8081/path/to/petclinic/pettclinic-1.0.0-SNAPSHOT.war'
 source 'http://192.168.50.4:8081/artifactory/libs-snapshot-local/org/springframework/samples/spring-petclinic/1.0.0-SNAPSHOT/spring-petclinic-1.0.0-20170110.180153-1.war'
 owner 'tomcat_petclinicserver'
